@@ -252,5 +252,5 @@
   .works-header-decos { display: none; }
   .works-grid { grid-template-columns: 1fr; }
   .work-card { transform: none !important; }
-  .works-filter-bar { top: 75px; }
+  .works-filter-bar { top: 0; }
 }

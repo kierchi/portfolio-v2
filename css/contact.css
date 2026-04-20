@@ -293,6 +293,23 @@ a.info-sticker-value:hover { opacity: 0.7; }
 }
 
 @media (max-width: 560px) {
+  .contact-hero { padding: 48px var(--pad-x) 40px; }
+  .contact-section { padding-top: 40px; }
   .contact-info { flex-direction: column; }
+  .info-sticker,
+  .note-sticker {
+    flex: 1 1 auto;
+    padding: 14px 16px;
+  }
+  .info-sticker-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .info-sticker-value { font-size: 14px; }
+  .note-sticker { padding: 14px 16px; }
   .form-submit  { width: 100%; justify-content: center; }
+  .form-card-header { padding: 16px 18px 14px; }
+  .contact-form { padding: 18px; }
+  .form-title { font-size: 18px; }
 }

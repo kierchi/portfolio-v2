@@ -343,4 +343,15 @@
   .about-photo-frame { width: 220px; height: 260px; }
   .badge-2 { left: 0; }
   .about-cta-btns { flex-direction: column; align-items: center; }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .tool-pill {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .tool-name { font-size: 13px; }
+  .tool-logo { width: 28px; height: 28px; }
 }
