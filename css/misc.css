@@ -1,0 +1,268 @@
+/* Misc. Projects — masonry grid */
+
+/* Hero: no cluster on misc, just centred text */
+.pj-hero .pj-hero-inner.misc-hero {
+  grid-template-columns: 1fr;
+  max-width: 680px;
+}
+
+/* Masonry via CSS columns */
+.misc-masonry {
+  columns: 3;
+  column-gap: 20px;
+}
+
+.misc-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  display: block;
+  /* override default pj-card hover tilt so it doesn't shift columns */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.misc-item:hover {
+  transform: translateY(-5px) rotate(0deg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Image area — variable heights for masonry variety */
+.misc-img {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: var(--border);
+  min-height: 180px;
+  position: relative;
+}
+.misc-img.misc-tall { min-height: 300px; }
+
+.misc-ph-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  text-align: center;
+  padding: 16px;
+}
+.misc-ph-label:not(:has(img)) { opacity: 0.4; }
+.misc-ph-label:has(img) {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+}
+
+/* Once real images are dropped in, they fill the container */
+.misc-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Slider hint badge ── */
+.misc-slider-hint {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--pink);
+  border: var(--border);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-xs);
+  padding: 5px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--dark);
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.has-slider:hover .misc-slider-hint {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ═══════════════════════════════════════
+   BEFORE / AFTER SLIDER MODAL
+═══════════════════════════════════════ */
+.ba-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(42,39,51,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.ba-modal[hidden] { display: none; }
+
+.ba-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Title above slider */
+.ba-modal-title {
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Close button — sticker style */
+.ba-close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  border: var(--border);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.15s;
+}
+.ba-close:hover { transform: rotate(12deg) scale(1.1); }
+
+/* ── The slider itself ── */
+.ba-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  background: var(--dark);
+}
+
+/* Back: timelapse video fills entirely */
+.ba-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Front: finished illustration, clipped */
+.ba-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;         /* JS overrides this */
+  height: 100%;
+  overflow: hidden;
+}
+.ba-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;        /* JS sets exact px width = slider width */
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+/* Drag handle */
+.ba-handle {
+  position: absolute;
+  top: 0;
+  left: 50%;          /* JS overrides this */
+  height: 100%;
+  width: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  z-index: 4;
+}
+
+.ba-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: var(--white);
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+.ba-circle {
+  width: 48px;
+  height: 48px;
+  background: var(--white);
+  border: var(--border);
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--dark);
+  position: relative;
+  z-index: 5;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.ba-handle:hover .ba-circle,
+.ba-handle:focus .ba-circle {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+.ba-handle:focus { outline: none; }
+.ba-handle:focus-visible .ba-circle {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+
+/* Labels */
+.ba-label {
+  position: absolute;
+  bottom: 14px;
+  background: rgba(255,255,255,0.92);
+  border: var(--border-thin);
+  border-radius: var(--r-pill);
+  padding: 4px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  pointer-events: none;
+  z-index: 3;
+  backdrop-filter: blur(4px);
+}
+.ba-label-left  { left: 14px; }
+.ba-label-right { right: 14px; }
+
+@media (max-width: 900px) {
+  .misc-masonry { columns: 2; }
+}
+@media (max-width: 600px) {
+  .ba-slider { aspect-ratio: 3 / 4; } /* portrait on mobile */
+  .ba-circle { width: 40px; height: 40px; }
+}
+@media (max-width: 540px) {
+  .misc-masonry { columns: 1; }
+  .misc-item { transform: none !important; }
+}

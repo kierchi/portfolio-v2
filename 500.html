@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Something went wrong — head back to Kaila Wong's portfolio." />
+  <title>500 — Something Went Wrong | Kaila Wong</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/KW-PL-BrownWhite.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/error.css" />
+</head>
+<body>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Kaila Wong — home"><img src="assets/images/logo/KW-PL-BrownWhite.svg" alt="KW" class="nav-logo-img"></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html"   class="nav-link" data-color="pink">home</a></li>
+      <li><a href="about.html"   class="nav-link" data-color="lavender">about</a></li>
+      <li><a href="works.html"   class="nav-link" data-color="yellow">works</a></li>
+      <li><a href="contact.html" class="nav-link" data-color="sky">contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="error-main dot-bg">
+
+    <div aria-hidden="true" class="error-decos">
+      <span class="deco" style="font-size:52px;color:var(--coral);top:10%;left:4%;--r:-12deg;--dur:4.5s;">★</span>
+      <span class="deco" style="font-size:44px;color:var(--yellow);top:14%;right:6%;--r:14deg;--dur:3.8s;--delay:0.5s;">✦</span>
+      <span class="deco" style="font-size:34px;color:var(--pink);bottom:20%;left:6%;--r:7deg;--dur:5.2s;--delay:1s;">♥</span>
+      <span class="deco" style="font-size:40px;color:var(--mint);bottom:16%;right:5%;--r:-9deg;--dur:4s;--delay:1.8s;">✧</span>
+    </div>
+
+    <div class="error-inner">
+
+      <div class="error-badge" style="background:var(--coral-light);">
+        <span class="error-code hand">500</span>
+        <span class="error-label">server error</span>
+      </div>
+
+      <p class="error-msg hand">my bad — something broke on my end 😵</p>
+
+      <div class="error-actions">
+        <a href="index.html"                      class="error-btn" style="background:var(--pink-light);  --tilt:-2deg;">
+          <span class="error-btn-icon">🏠</span>
+          <span class="error-btn-text">take me home</span>
+        </a>
+        <a href="javascript:location.reload()"    class="error-btn" style="background:var(--coral-light); --tilt:1.5deg;">
+          <span class="error-btn-icon">↻</span>
+          <span class="error-btn-text">try again</span>
+        </a>
+        <a href="contact.html"                    class="error-btn" style="background:var(--sky-light);   --tilt:-1deg;">
+          <span class="error-btn-icon">✉</span>
+          <span class="error-btn-text">contact me</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span class="footer-name">Kaila Wong</span>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="works.html">works</a>
+      <a href="contact.html">contact</a>
+    </nav>
+    <div class="footer-socials">
+      <a href="https://instagram.com/goldinwinterr" class="footer-social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://tiktok.com/@goldinwinter" class="footer-social-icon" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.67a8.28 8.28 0 0 0 4.84 1.55V6.76a4.84 4.84 0 0 1-1.07-.07z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kaila-wong-a14934258" class="footer-social-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 Kaila Wong ✦ made with love &amp; too many stickers</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

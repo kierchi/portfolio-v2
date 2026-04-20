@@ -1,0 +1,115 @@
+/* ============================================
+   ERROR PAGES  (404, 500)
+   ============================================ */
+
+.error-main {
+  min-height: calc(100vh - 74px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px var(--pad-x);
+  position: relative;
+  overflow: hidden;
+}
+
+.error-decos span { position: fixed; pointer-events: none; }
+
+/* ── Centred column ── */
+.error-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Big number badge ── */
+.error-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: var(--border-thick);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 20px 56px 16px;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.error-badge:hover {
+  transform: rotate(0deg) scale(1.04);
+  box-shadow: 12px 12px 0 var(--dark);
+}
+
+.error-code {
+  font-size: clamp(80px, 16vw, 148px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--dark);
+  letter-spacing: -3px;
+}
+
+.error-label {
+  font-family: var(--font-display);
+  font-size: clamp(13px, 2vw, 18px);
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--dark);
+  opacity: 0.6;
+}
+
+/* ── One-liner ── */
+.error-msg {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 600;
+  color: var(--dark);
+  opacity: 0.7;
+}
+
+/* ── Sticker nav buttons ── */
+.error-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.error-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 22px 32px;
+  border: var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 140px;
+  color: var(--dark);
+}
+.error-btn:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.error-btn-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.error-btn-text {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .error-badge  { padding: 16px 36px 12px; }
+  .error-actions { gap: 12px; }
+  .error-btn { padding: 18px 24px; min-width: 120px; }
+}

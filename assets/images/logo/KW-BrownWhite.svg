@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: Oliver-Regular, Oliver;
+        font-size: 124.53px;
+        letter-spacing: -.05em;
+      }
+
+      .cls-2 {
+        fill: #3e2723;
+      }
+    </style>
+  </defs>
+  <g id="Blue">
+    <text class="cls-1" transform="translate(9.82 129.19)"><tspan x="0" y="0">KW</tspan></text>
+  </g>
+  <g id="Brown">
+    <text class="cls-2" transform="translate(6.13 124.95)"><tspan x="0" y="0">KW</tspan></text>
+  </g>
+</svg>

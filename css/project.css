@@ -1,0 +1,407 @@
+/* ============================================
+   SHARED PROJECT PAGE TEMPLATE
+   All project pages load: styles.css + project.css + [page].css
+   ============================================ */
+
+/* ============================================
+   BACK LINK
+   ============================================ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  padding: 6px 14px;
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-xs);
+  margin-bottom: 28px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.back-link:hover {
+  transform: translateX(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.pj-hero {
+  padding: 64px var(--pad-x) 80px;
+  position: relative;
+  overflow: hidden;
+}
+.pj-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.pj-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pj-cats { display: flex; gap: 8px; flex-wrap: wrap; }
+.pj-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 88px);
+  font-weight: 700;
+  line-height: 1.02;
+  color: var(--dark);
+}
+.pj-tagline {
+  font-family: var(--font-hand);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--dark);
+  opacity: 0.6;
+}
+.pj-tools-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  width: fit-content;
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-pill);
+  box-shadow: var(--shadow-xs);
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+/* Hero image cluster (right side) */
+.pj-hero-cluster {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.pj-cluster-card {
+  border: var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  max-width: 320px;
+}
+.pj-cluster-main {
+  height: 200px;
+  transform: rotate(-1.5deg);
+}
+.pj-cluster-main:hover { transform: translateY(-5px) rotate(0.5deg); box-shadow: var(--shadow-lg); }
+
+.pj-cluster-smalls {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  max-width: 320px;
+}
+.pj-cluster-sm {
+  flex: 1;
+  height: 110px;
+}
+.pj-cluster-sm:nth-child(1) { transform: rotate(-2deg); }
+.pj-cluster-sm:nth-child(2) { transform: rotate(2deg); }
+.pj-cluster-sm:hover { transform: translateY(-4px) rotate(0deg); box-shadow: var(--shadow-lg); }
+
+.cluster-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-hand);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+}
+/* Text-only placeholder gets the dimmed look; image containers fill the card */
+.cluster-ph:not(:has(img)) { opacity: 0.45; }
+.cluster-ph:has(img) {
+  position: absolute;
+  inset: 0;
+}
+.cluster-ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cluster-ph img[src$=".svg"] {
+  position: static;
+  width: calc(100% - 24px);
+  height: auto;
+  max-height: calc(100% - 24px);
+  object-fit: unset;
+  padding: 0;
+}
+.cluster-caption {
+  padding: 10px 14px;
+  border-top: var(--border);
+  font-family: var(--font-hand);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.pj-section { padding: 72px var(--pad-x); }
+.pj-section-alt { background: var(--cream-dark); }
+
+.pj-section-header { margin-bottom: 36px; }
+.pj-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.5vw, 36px);
+  font-weight: 700;
+}
+.pj-section-sub {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  font-weight: 600;
+  opacity: 0.5;
+  margin-top: 4px;
+}
+
+/* ============================================
+   OVERVIEW STICKER PANELS
+   ============================================ */
+.pj-overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.pj-panel {
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.pj-panel:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.pj-panel-header {
+  padding: 16px 22px;
+  border-bottom: var(--border);
+}
+.pj-panel-label {
+  font-family: var(--font-hand);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.pj-panel-body {
+  padding: 22px;
+}
+.pj-panel-body p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  opacity: 0.8;
+  margin-bottom: 14px;
+}
+.pj-panel-body p:last-child { margin-bottom: 0; }
+
+/* Details list inside panel */
+.pj-details-list { display: flex; flex-direction: column; }
+.pj-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 14px 22px;
+  border-bottom: var(--border-thin);
+}
+.pj-detail:first-child { padding-top: 14px; }
+.pj-detail:last-child  { border-bottom: none; }
+.pj-detail-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.4;
+}
+.pj-detail-val {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.pj-tool-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+
+/* ============================================
+   COLOR PALETTE STICKERS
+   ============================================ */
+.pj-palette-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.pj-color-sticker {
+  flex: 1;
+  min-width: 90px;
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+.pj-color-sticker:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.pj-swatch-block { height: 88px; border-bottom: var(--border); }
+.pj-color-name {
+  font-family: var(--font-hand);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 12px 2px;
+  display: block;
+}
+.pj-color-hex {
+  font-family: monospace;
+  font-size: 11px;
+  opacity: 0.45;
+  padding: 0 12px 10px;
+  display: block;
+}
+
+/* ============================================
+   GENERIC STICKER CARD (images / content)
+   ============================================ */
+.pj-card {
+  background: var(--white);
+  border: var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.pj-card:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.pj-card-img {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: var(--border);
+  font-family: var(--font-hand);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+.pj-card-img:not(:has(img)) { opacity: 0.45; }
+.pj-card-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+}
+.pj-card-img img[src$=".svg"] {
+  position: static;
+  width: calc(100% - 40px);
+  height: auto;
+  max-height: calc(100% - 40px);
+  object-fit: unset;
+  padding: 0;
+}
+.pj-card-caption {
+  padding: 12px 16px;
+  font-family: var(--font-hand);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ============================================
+   PROJECT NAV (prev / next)
+   ============================================ */
+.pj-bottom-nav {
+  padding: 64px var(--pad-x);
+  border-top: var(--border);
+}
+.pj-bottom-nav-inner {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pj-nav-sticker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 22px 40px;
+  border: var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 200px;
+  text-align: center;
+}
+.pj-nav-sticker:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.pj-nav-dir {
+  font-family: var(--font-hand);
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.55;
+}
+.pj-nav-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* ============================================
+   FOOTER SHARED (reused across project pages)
+   ============================================ */
+/* Already in styles.css — nothing extra needed */
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .pj-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pj-hero-cluster { display: none; }
+  .pj-overview-grid { grid-template-columns: 1fr; }
+  .pj-panel { transform: none !important; }
+  .pj-palette-row { gap: 10px; }
+  .pj-swatch-block { height: 64px; }
+}
+@media (max-width: 560px) {
+  .pj-bottom-nav-inner { flex-direction: column; align-items: center; }
+  .pj-nav-sticker { transform: none !important; width: 100%; max-width: 300px; }
+}

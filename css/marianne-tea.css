@@ -1,0 +1,47 @@
+/* Marianne's Tea — page-specific styles */
+
+/* Logo section grid */
+.mt-logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 18px;
+}
+.mt-logo-main {
+  grid-column: 1 / -1;
+}
+.mt-main-img  { min-height: 200px; }
+.mt-var-img   { min-height: 140px; }
+
+/* Packaging grid */
+.mt-packaging-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.mt-pack-wide { grid-column: span 1; }
+.mt-pack-img  { min-height: 220px; }
+
+/* Range note card */
+.mt-range-note { margin-top: 4px; }
+
+/* Product showcase */
+.mt-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.mt-showcase-img { min-height: 200px; }
+
+@media (max-width: 900px) {
+  .mt-logo-grid        { grid-template-columns: 1fr; }
+  .mt-packaging-grid   { grid-template-columns: 1fr 1fr; }
+  .mt-pack-wide        { grid-column: span 2; }
+  .mt-showcase-grid    { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .mt-packaging-grid   { grid-template-columns: 1fr; }
+  .mt-pack-wide        { grid-column: span 1; }
+  .mt-showcase-grid    { grid-template-columns: 1fr 1fr; }
+}
