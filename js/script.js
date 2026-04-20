@@ -192,3 +192,123 @@ document.querySelectorAll('.sticker-card').forEach(card => {
     card.style.transform = '';
   });
 });
+
+/* ============================================
+   CUSTOM CURSOR + STICKER TRAIL
+   ============================================ */
+(function () {
+  // Skip on touch / coarse-pointer devices
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  /* ── Star cursor SVG ── */
+  const PLANE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <polygon points="12,2 14.5,9.5 22,12 14.5,14.5 12,22 9.5,14.5 2,12 9.5,9.5" fill="#3E2723" stroke="#FFFAF3" stroke-width="1.2"/>
+  </svg>`;
+
+  /* ── Trail config ── */
+  const SHAPES  = ['✦', '★', '♥', '●'];
+  const COLORS  = ['#FFB3C6', '#FFE566', '#C5B4E3', '#B2E8D8', '#A8D8EA', '#FF8C7A'];
+  const SIZES   = [13, 15, 17, 12];
+  const MAX_POOL = 30;           // reuse DOM nodes
+  const SPAWN_DIST = 22;         // px between trail particles
+  const TRAIL_DUR  = 750;        // ms, must match CSS animation duration
+
+  /* ── Create cursor plane element ── */
+  const plane = document.createElement('div');
+  plane.className = 'cursor-plane';
+  plane.innerHTML = PLANE_SVG;
+  document.body.appendChild(plane);
+
+  /* ── Particle pool ── */
+  const pool = [];
+  for (let i = 0; i < MAX_POOL; i++) {
+    const el = document.createElement('span');
+    el.className = 'cursor-trail';
+    el.hidden = true;
+    document.body.appendChild(el);
+    pool.push(el);
+  }
+  let poolIdx = 0;
+
+  function getParticle() {
+    const el = pool[poolIdx % MAX_POOL];
+    poolIdx++;
+    return el;
+  }
+
+  /* ── State ── */
+  let mouseX = -200, mouseY = -200;
+  let renderX = -200, renderY = -200;
+  let lastSpawnX = -9999, lastSpawnY = -9999;
+  let visible = false;
+
+  /* ── Activate ── */
+  document.documentElement.classList.add('custom-cursor');
+
+  /* ── Mouse tracking ── */
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!visible) {
+      renderX = mouseX;
+      renderY = mouseY;
+      visible = true;
+    }
+  });
+
+  document.addEventListener('mouseleave', () => { visible = false; });
+  document.addEventListener('mouseenter', () => { visible = true;  });
+
+  /* ── Spawn a trail particle ── */
+  function spawnParticle(x, y) {
+    const el     = getParticle();
+    const shape  = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+    const color  = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const size   = SIZES[Math.floor(Math.random() * SIZES.length)];
+    // random gentle drift
+    const tx = (Math.random() - 0.5) * 28;
+    const ty = -(Math.random() * 28 + 16);
+
+    el.textContent  = shape;
+    el.style.color  = color;
+    el.style.fontSize = size + 'px';
+    el.style.left   = x + 'px';
+    el.style.top    = y + 'px';
+    el.style.setProperty('--tx', tx + 'px');
+    el.style.setProperty('--ty', ty + 'px');
+    el.hidden = false;
+
+    // Restart animation
+    el.classList.remove('cursor-trail-animate');
+    void el.offsetWidth; // reflow
+    el.classList.add('cursor-trail-animate');
+
+    // Hide after animation ends
+    setTimeout(() => { el.hidden = true; }, TRAIL_DUR);
+  }
+
+  /* ── RAF loop ── */
+  function loop() {
+    requestAnimationFrame(loop);
+
+    // Snap directly to mouse — no lag
+    renderX = mouseX;
+    renderY = mouseY;
+
+    // Position star cursor centered on mouse
+    plane.style.transform = `translate(${renderX - 12}px, ${renderY - 12}px)`;
+    plane.style.opacity   = visible ? '1' : '0';
+
+    // Spawn trail particles every SPAWN_DIST px
+    const ddx  = renderX - lastSpawnX;
+    const ddy  = renderY - lastSpawnY;
+    const dist = Math.sqrt(ddx * ddx + ddy * ddy);
+    if (visible && dist >= SPAWN_DIST) {
+      spawnParticle(renderX, renderY);
+      lastSpawnX = renderX;
+      lastSpawnY = renderY;
+    }
+  }
+
+  requestAnimationFrame(loop);
+})();

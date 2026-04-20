@@ -172,29 +172,50 @@
           <h2 class="section-title">things i love ♥</h2>
         </div>
         <div class="interests-grid">
-          <div class="interest-sticker" style="background: var(--pink); --r: -2.5deg;">
-            <span class="interest-icon">🎨</span>
-            <span class="interest-label">Illustration<br>&amp; Digital Art</span>
+          <div class="interest-wrap">
+            <div class="interest-sticker" style="background: var(--pink); --r: -2.5deg;">
+              <span class="interest-icon">🎨</span>
+              <span class="interest-label">Illustration<br>&amp; Digital Art</span>
+            </div>
+            <div class="interest-tab" style="background: var(--pink);">
+              <p>Drawing in anime style is my creative escape. Long-term, I'm working toward becoming a professional illustrator — one panel at a time.</p>
+            </div>
           </div>
-          <div class="interest-sticker" style="background: var(--yellow); --r: 2deg;">
-            <span class="interest-icon">🎬</span>
-            <span class="interest-label">Animation &amp;<br>Cinematic Analysis</span>
+          <div class="interest-wrap">
+            <div class="interest-sticker" style="background: var(--yellow); --r: 2deg;">
+              <span class="interest-icon">🎬</span>
+              <span class="interest-label">Animation &amp;<br>Cinematic Analysis</span>
+            </div>
+            <div class="interest-tab" style="background: var(--yellow);">
+              <p>I could watch movie breakdowns for hours. From frame composition to story structure, I love picking apart what makes a scene hit — then going to watch the actual film.</p>
+            </div>
           </div>
-          <div class="interest-sticker" style="background: var(--lavender); --r: -1.5deg;">
-            <span class="interest-icon">🎵</span>
-            <span class="interest-label">Curating<br>Playlists</span>
+          <div class="interest-wrap">
+            <div class="interest-sticker" style="background: var(--lavender); --r: -1.5deg;">
+              <span class="interest-icon">🎵</span>
+              <span class="interest-label">Curating<br>Playlists</span>
+            </div>
+            <div class="interest-tab" style="background: var(--lavender);">
+              <p>There's an art to sequencing songs. I put real thought into flow, mood, and pacing — every playlist tells a story if you listen the whole way through.</p>
+            </div>
           </div>
-          <div class="interest-sticker" style="background: var(--mint); --r: 2.5deg;">
-            <span class="interest-icon">📓</span>
-            <span class="interest-label">Visual<br>Journaling</span>
+          <div class="interest-wrap">
+            <div class="interest-sticker" style="background: var(--sky); --r: -2deg;">
+              <span class="interest-icon">📖</span>
+              <span class="interest-label">Visual<br>Storytelling</span>
+            </div>
+            <div class="interest-tab" style="background: var(--sky);">
+              <p>I'm drawn to stories told through imagery — where the art, layout, and colour do as much work as the words. Still figuring out exactly where this takes me.</p>
+            </div>
           </div>
-          <div class="interest-sticker" style="background: var(--sky); --r: -2deg;">
-            <span class="interest-icon">📖</span>
-            <span class="interest-label">Visual<br>Storytelling</span>
-          </div>
-          <div class="interest-sticker" style="background: var(--coral); --r: 1.5deg;">
-            <span class="interest-icon">🌍</span>
-            <span class="interest-label">Interactive<br>World-Building</span>
+          <div class="interest-wrap tab-left">
+            <div class="interest-sticker" style="background: var(--coral); --r: 1.5deg;">
+              <span class="interest-icon">🌍</span>
+              <span class="interest-label">Interactive<br>World-Building</span>
+            </div>
+            <div class="interest-tab" style="background: var(--coral);">
+              <p>Gaming, basically. I spend time in Minecraft, play FPS like Call of Duty, and have a soft spot for visual novels. I love when a game builds a world you want to live in.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -237,5 +258,20 @@
   </footer>
 
   <script src="js/script.js"></script>
+  <script>
+    // Interest sticker tap-to-open on touch devices
+    document.querySelectorAll('.interest-wrap').forEach(wrap => {
+      wrap.addEventListener('click', e => {
+        if (!window.matchMedia('(hover: none)').matches) return;
+        const isOpen = wrap.classList.contains('is-open');
+        document.querySelectorAll('.interest-wrap.is-open').forEach(s => s.classList.remove('is-open'));
+        if (!isOpen) wrap.classList.add('is-open');
+        e.stopPropagation();
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.interest-wrap.is-open').forEach(s => s.classList.remove('is-open'));
+    });
+  </script>
 </body>
 </html>
